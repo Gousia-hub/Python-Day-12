@@ -8,7 +8,7 @@ HLT = 5
 # Include an ASCII art logo.
  
 
-# Allow the player to submit a guess for a number between 1 and 100.
+
 def check_answer(guess, answer, turns):
   if guess > answer:
     print("Too high")
@@ -26,7 +26,7 @@ def set_difficulty():
   else:
     return HLT
 
-# Check user's guess against actual answer. Print "Too high." or "Too low." depending on the user's answer.
+
 game_over = False
 while not game_over:
   def game():
