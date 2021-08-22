@@ -1,0 +1,59 @@
+language = "bash"
+run = ""
+import random
+from art import logo
+from replit import clear
+ELT = 10
+HLT = 5
+# Include an ASCII art logo.
+ 
+
+# Allow the player to submit a guess for a number between 1 and 100.
+def check_answer(guess, answer, turns):
+  if guess > answer:
+    print("Too high")
+    return turns - 1
+  elif guess < answer:
+    print("Too low")
+    return turns - 1
+  else:
+    print(f"You got it!THis is the {answer} answer.")
+
+def set_difficulty():
+  level = input("Choose a difficulty type:Hard or Easy: ")
+  if level == "easy":
+    return ELT
+  else:
+    return HLT
+
+# Check user's guess against actual answer. Print "Too high." or "Too low." depending on the user's answer.
+game_over = False
+while not game_over:
+  def game():
+    print(logo)
+    print("Welcome to the number guessing game!")
+    print("I'm thinking of a no between 1 and 100")
+    answer = random.randint(1,100)
+
+    turns = set_difficulty()
+    
+
+    guess = 0
+    while guess != answer:
+      print(f"You have {turns} attempts left to guess the no.")
+      guess = int(input("Make a guess: "))
+
+      turns = check_answer(guess, answer, turns)
+      if turns == 0:
+        print("You have run out of guesses.You loose")
+        print(f"The number was {answer}")
+        return 0
+      elif guess != answer:
+        print("Guess again.")
+  game()
+  play_again = input("Do u wanna play again:yes or no: ")
+  if play_again == "yes":
+    game_over = False
+    clear()
+  else:
+    game_over = True
